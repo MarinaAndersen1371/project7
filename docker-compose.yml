@@ -1,0 +1,10 @@
+version: "3.9"
+
+services:
+  app:
+    image: ${IMAGE_NAME}:${IMAGE_TAG}
+    container_name: marina_app
+    ports:
+      - "5000:5000"
+    restart: unless-stopped
+
