@@ -41,6 +41,8 @@ deploy:
     - export FLYCTL_INSTALL="/root/.fly"
     - export PATH="$FLYCTL_INSTALL/bin:$PATH"
     - flyctl auth token "$FLY_API_TOKEN"
+    # Login to Docker Hub so Fly can pull the private image
+    - echo "$DOCKERHUB_TOKEN" | docker login -u "$DOCKERHUB_USER" --password-stdin
   script:
     - flyctl deploy --image $IMAGE_NAME:$IMAGE_TAG --remote-only
   only:
