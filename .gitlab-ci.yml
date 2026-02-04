@@ -6,7 +6,7 @@ services:
 variables:
   DOCKER_TLS_CERTDIR: ''
   IMAGE_NAME: marinaandersen1371/marina_project3
-  IMAGE_TAG: '1.0'
+  IMAGE_TAG: latest
 
 stages:
   - test
