@@ -34,7 +34,9 @@ build:
 
 deploy:
   stage: deploy
-  image: flyio/flyctl:latest
+  image:
+    name: flyio/flyctl:latest
+    entrypoint: ['']
   script:
     - flyctl deploy --image $IMAGE_NAME:$IMAGE_TAG --remote-only
   only:
