@@ -34,13 +34,8 @@ build:
 
 deploy:
   stage: deploy
-  image: alpine:3.19
-  before_script:
-    - apk add --no-cache curl bash
-    - curl -L https://fly.io/install.sh | sh
-    - export FLYCTL_INSTALL="/root/.fly"
-    - export PATH="$FLYCTL_INSTALL/bin:$PATH"
+  image: flyio/flyctl:latest
   script:
-    - flyctl deploy --image $IMAGE_NAME:$IMAGE_TAG --remote-only
+    - flyctl deploy --remote-only
   only:
     - main
