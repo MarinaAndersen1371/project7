@@ -42,7 +42,12 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Build Docker image
-        run: docker build -t marinaandersen1371/marina_project3:latest .
+        run: |
+          docker build \
+            -t marinaandersen1371/marina_project3:latest \
+            -t marinaandersen1371/marina_project3:${{ github.sha }} .
 
       - name: Push Docker image
-        run: docker push marinaandersen1371/marina_project3:latest
+        run: |
+          docker push marinaandersen1371/marina_project3:latest
+          docker push marinaandersen1371/marina_project3:${{ github.sha }}
