@@ -35,5 +35,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
       - name: Build Docker image
-        run: docker build -t marina_project3:latest .
+        run: docker build -t marinaandersen1371/marina_project3:latest .
+
+      - name: Push Docker image
+        run: docker push marinaandersen1371/marina_project3:latest
